@@ -91,27 +91,12 @@
     
     cell.textLabel.text = [[self.posts objectAtIndex:indexPath.row]valueForKey:@"title_plain"];
     
-    //cell.imageView.image = [[self.attachments objectAtIndex:indexPath.row]valueForKey:@"url"];
+    NSString* myurl = [[self.attachments objectAtIndex:0]valueForKey:@"url"];
     
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: myurl]];
     
-//    NSURL *imageURL = [NSURL URLWithString:@"http://d1mxp0yvealdwc.cloudfront.net/e92c939d-e83b-4592-b367-327fa67339fb/1001 123.jpg"];
-//    NSLog(@"imge %@",imageURL);
+    cell.imageView.image = [UIImage imageWithData: imageData];
     
-//    NSData *imageData = [NSData dataWithContentsOfURL:[[self.attachments objectAtIndex:0]valueForKey:@"url"]];
-//    //NSLog(@"imge %@",imageData);
-//    UIImage *image = [UIImage imageWithData:imageData];
-//    //NSLog(@"imge %@",image);
-//    cell.imageView.image = image;
-
-    
-//    NSURL *url = [[self.attachments objectAtIndex:0]valueForKey:@"url"];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-//    UIImage *img = [[UIImage alloc] initWithData:data];
-//    
-//    NSLog(@"%@", img);
-//    cell.imageView.image = img;
-    
- 
     return cell;
 }
 
@@ -129,24 +114,6 @@
     
     return 80;
     
-}
-
-
--  (CGSize) calculateLabelHeightWith:(CGFloat)width text:(NSString*)textString
-{
-    CGSize maximumSize = CGSizeMake(width, 1000);
-//    CGSize size = [textString sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14]
-//                         constrainedToSize:maximumSize
-//                             lineBreakMode:UILineBreakModeWordWrap];
-    
-    CGRect textRect = [textString boundingRectWithSize:maximumSize
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                      attributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Medium" size:18]}
-                                         context:nil];
-    
-    //CGSize size = textRect.size;
-    
-    return textRect.size;
 }
 
 

@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController ()
 
 @property (nonatomic, strong) NSArray *posts;
-@property (nonatomic, strong) NSArray *attachments;
+@property (nonatomic, strong) NSMutableArray *attachments;
+@property (nonatomic, strong) NSMutableArray *urls;
 
 @end
 
@@ -20,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"hello, world");
+    //NSLog(@"hello, world");
     
     // Do any additional setup after loading the view, typically from a nib.
     
@@ -32,36 +34,46 @@
     
     NSError *error = nil;
     
+    
+    //fetching JSON data and storing it in NSDictionary
     NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
     
     //NSLog(@"1");
     
+    
+    //storing all the post objects in posts array
     self.posts = [dataDictionary objectForKey:@"posts"];
     
-    
-    self.attachments = [[self.posts objectAtIndex:0]valueForKey:@"attachments"];
-    
-    //NSString *img = [[self.attachments objectAtIndex:0]valueForKey:@"url"];
+    self.attachments = [[NSMutableArray alloc] init];
     
     
-    
-    //NSLog(@"%@", img);
-    
-    
-    //NSLog(@"%@", posts);
-    
-    //NSArray* post1 = [posts objectForKey:@"title"];
-    
-    NSString *title = [[self.posts objectAtIndex:0]valueForKey:@"title_plain"];
-    NSString *date = [[self.posts objectAtIndex:0]valueForKey:@"date"];
-    
-    NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"excerpt"];
+    //storing all the attachments in attachments array
+    for (int i = 0; i< self.posts.count; i++) {
+        [self.attachments addObject:[[self.posts objectAtIndex:i]valueForKey:@"attachments"]];
+    }
     
     
-    NSLog(@"%@", title);
-    NSLog(@"%@", date);
+    //logging all the image URLS for testing
+    for (int i = 0; i< self.attachments.count; i++) {
+        
+        NSLog(@"URL: %@", [[self.attachments objectAtIndex:i]valueForKey:@"url"]);
+    }
+    
+    
+    //here's the problem, we need to kick out all the clutter from content.
+    NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"content"];
+    
     NSLog(@"%@", content);
     
+//    NSString *title = [[self.posts objectAtIndex:0]valueForKey:@"title_plain"];
+//    NSString *date = [[self.posts objectAtIndex:0]valueForKey:@"date"];
+//    
+//    NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"excerpt"];
+//    
+//    
+//    NSLog(@"%@", title);
+//    NSLog(@"%@", date);
+//    NSLog(@"%@", content);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,28 +101,21 @@
         cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     }
     
+    //displays titles in UITableView cells
     cell.textLabel.text = [[self.posts objectAtIndex:indexPath.row]valueForKey:@"title_plain"];
     
-    NSString* myurl = [[self.attachments objectAtIndex:0]valueForKey:@"url"];
+
+    //NSString* myurl = [[self.attachments objectAtIndex:0]valueForKey:@"url"];
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: myurl]];
-    
-    cell.imageView.image = [UIImage imageWithData: imageData];
+    //code to convert image urls to viewable images.
+//    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: myurl]];
+//    
+//    cell.imageView.image = [UIImage imageWithData: imageData];
     
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-//    if (indexPath.section == 0) {
-//        if (indexPath.row == 1) {
-//            return 120;
-//        }
-//    }
-    
-//    CGSize rowSize=[self calculateLabelHeightWith:320 text:[[self.posts objectAtIndex:indexPath.row]valueForKey:@"title_plain"]];
-//    
-//    return (rowSize.height+20);
     
     return 80;
     

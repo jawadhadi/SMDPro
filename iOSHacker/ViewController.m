@@ -102,15 +102,33 @@
     }
     
     //displays titles in UITableView cells
-    cell.textLabel.text = [[self.posts objectAtIndex:indexPath.row]valueForKey:@"title_plain"];
+    
+    NSString *title = [[self.posts objectAtIndex:indexPath.row]valueForKey:@"title_plain"];
+    
+    NSString *tempTitle = [title stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
+    
+    NSString *tempTitle2 = [tempTitle stringByReplacingOccurrencesOfString:@"&#8216;" withString:@"'"];
+    
+    cell.textLabel.text = tempTitle2;
     
 
-    //NSString* myurl = [[self.attachments objectAtIndex:0]valueForKey:@"url"];
+    //NSString* url = [[self.attachments objectAtIndex:0] valueForKey:@"url"];
     
     //code to convert image urls to viewable images.
-//    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: myurl]];
-//    
-//    cell.imageView.image = [UIImage imageWithData: imageData];
+    
+    NSURL* myURL = [NSURL URLWithString: self.attachments[indexPath.row][0][@"url"]];
+    
+    NSLog(@"myURL: %@", myURL);
+    
+    //NSData * imageData = [[NSData alloc] initWithContentsOfURL: myURL];
+    
+    UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:myURL]];
+    
+    //UIImage *thumb = [img makeThumbnailOfSize:CGSizeMake(32,32)];
+    
+    cell.imageView.image = img;
+    
+    cell.imageView.frame = CGRectMake(0,0,16,16);
     
     return cell;
 }

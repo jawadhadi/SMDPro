@@ -26,7 +26,34 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     
+    //iAd
+    
+    
+    bannerView = [[ADBannerView alloc]initWithFrame:
+                  CGRectMake([[UIScreen mainScreen] bounds].size.width-375, [[UIScreen mainScreen] bounds].size.height-50, 320, 50)];
+    // Optional to set background color to clear color
+    [bannerView setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview: bannerView];
+
+    //NSURL *blogURL = [NSURL URLWithString:@"http://ioshacker.com/?json=1"];
+    
+    [self fetchPosts];
+    
+//    NSString *title = [[self.posts objectAtIndex:0]valueForKey:@"title_plain"];
+//    NSString *date = [[self.posts objectAtIndex:0]valueForKey:@"date"];
+//    
+//    NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"excerpt"];
+//    
+//    
+//    NSLog(@"%@", title);
+//    NSLog(@"%@", date);
+//    NSLog(@"%@", content);
+}
+
+-(void)fetchPosts{
+    
     //code to fetch JSON data and parse it to foundation objects
+    
     
     NSURL *blogURL = [NSURL URLWithString:@"http://ioshacker.com/?json=1"];
     
@@ -64,16 +91,22 @@
     NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"content"];
     
     NSLog(@"%@", content);
+}
+
+
+
+-(void)refreshView:(UIRefreshControl *)refresh {
     
-//    NSString *title = [[self.posts objectAtIndex:0]valueForKey:@"title_plain"];
-//    NSString *date = [[self.posts objectAtIndex:0]valueForKey:@"date"];
-//    
-//    NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"excerpt"];
-//    
-//    
-//    NSLog(@"%@", title);
-//    NSLog(@"%@", date);
-//    NSLog(@"%@", content);
+        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    
+        // custom refresh logic would be placed here...
+        [self fetchPosts];
+    
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",[formatter stringFromDate:[NSDate date]]];
+        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+        [refresh endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +121,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     NSString *identifier = @"post";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -118,7 +150,7 @@
     
     NSURL* myURL = [NSURL URLWithString: self.attachments[indexPath.row][0][@"url"]];
     
-    NSLog(@"myURL: %@", myURL);
+    //NSLog(@"myURL: %@", myURL);
     
     //NSData * imageData = [[NSData alloc] initWithContentsOfURL: myURL];
     
@@ -128,7 +160,7 @@
     
     cell.imageView.image = img;
     
-    cell.imageView.frame = CGRectMake(0,0,16,16);
+    //cell.imageView.frame = CGRectMake(0,0,16,16);
     
     return cell;
 }

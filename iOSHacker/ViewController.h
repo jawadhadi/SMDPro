@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@import iAd;
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+//@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ADBannerViewDelegate>
+//{
+//    ADBannerView *bannerView;
+//}
+//@end
 
-
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ADBannerViewDelegate>
+{
+    ADBannerView *bannerView;
+    UIRefreshControl *refresh;
+}
 
 @end
-

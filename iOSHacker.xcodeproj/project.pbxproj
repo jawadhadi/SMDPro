@@ -415,6 +415,7 @@
 				0FC527E61B0E118700F0AA44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0FC527E71B0E118700F0AA44 /* Build configuration list for PBXNativeTarget "iOSHackerTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +424,7 @@
 				0FC527E91B0E118700F0AA44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

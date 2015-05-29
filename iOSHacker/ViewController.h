@@ -15,10 +15,16 @@
 //}
 //@end
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ADBannerViewDelegate>
+@interface ViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, ADBannerViewDelegate>
 {
     ADBannerView *bannerView;
-    UIRefreshControl *refresh;
+    //UIRefreshControl *refresh;
+    
 }
+
+@property (nonatomic, strong) IBOutlet UITableView* postsView;
+
+
+-(void)refreshView:(UIRefreshControl *)refresh;
 
 @end

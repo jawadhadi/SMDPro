@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+#define blogURL @"http://ioshacker.com/?json=1"
 
 @interface ViewController ()
 
@@ -39,6 +40,14 @@
     
     [self fetchPosts];
     
+    UIRefreshControl  * refresh = [[UIRefreshControl alloc] init];
+    
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to refresh"];
+    
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refresh;
+    
 //    NSString *title = [[self.posts objectAtIndex:0]valueForKey:@"title_plain"];
 //    NSString *date = [[self.posts objectAtIndex:0]valueForKey:@"date"];
 //    
@@ -55,9 +64,9 @@
     //code to fetch JSON data and parse it to foundation objects
     
     
-    NSURL *blogURL = [NSURL URLWithString:@"http://ioshacker.com/?json=1"];
+    NSURL *bURL = [NSURL URLWithString:blogURL];
     
-    NSData *jsonData = [NSData dataWithContentsOfURL:blogURL];
+    NSData *jsonData = [NSData dataWithContentsOfURL:bURL];
     
     NSError *error = nil;
     
@@ -91,22 +100,27 @@
     NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"content"];
     
     NSLog(@"%@", content);
+    [self. postsView reloadData];
 }
 
 
 
 -(void)refreshView:(UIRefreshControl *)refresh {
     
-        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
     
-        // custom refresh logic would be placed here...
-        [self fetchPosts];
-    
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MMM d, h:mm a"];
-        NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",[formatter stringFromDate:[NSDate date]]];
-        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-        [refresh endRefreshing];
+    NSLog(@"Refreshing data...");
+
+    // custom refresh logic would be placed here...
+    [self fetchPosts];
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",[formatter stringFromDate:[NSDate date]]];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    [refresh endRefreshing];
+
+
 }
 
 - (void)didReceiveMemoryWarning {

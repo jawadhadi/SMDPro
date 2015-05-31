@@ -12,9 +12,7 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) NSArray *posts;
-@property (nonatomic, strong) NSMutableArray *attachments;
-@property (nonatomic, strong) NSMutableArray *urls;
+
 
 @end
 
@@ -35,8 +33,6 @@
     // Optional to set background color to clear color
     [bannerView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview: bannerView];
-
-    //NSURL *blogURL = [NSURL URLWithString:@"http://ioshacker.com/?json=1"];
     
     [self fetchPosts];
     
@@ -90,17 +86,17 @@
     
     
     //logging all the image URLS for testing
-    for (int i = 0; i< self.attachments.count; i++) {
+    /*for (int i = 0; i< self.attachments.count; i++) {
         
         NSLog(@"URL: %@", [[self.attachments objectAtIndex:i]valueForKey:@"url"]);
-    }
+    }*/
     
     
     //here's the problem, we need to kick out all the clutter from content.
-    NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"content"];
-    
-    NSLog(@"%@", content);
-    [self. postsView reloadData];
+//    NSString *content = [[self.posts objectAtIndex:0]valueForKey:@"content"];
+//    
+//    NSLog(@"%@", content);
+    //[self.postsView reloadData];
 }
 
 
@@ -142,8 +138,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         
+        NSLog(@"YES");
+        
         cell.textLabel.numberOfLines = 0;
-        cell.textLabel.font = [UIFont systemFontOfSize:16.0];
+        cell.textLabel.font = [UIFont systemFontOfSize:8.0];
         cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     }
     
@@ -155,35 +153,59 @@
     
     NSString *tempTitle2 = [tempTitle stringByReplacingOccurrencesOfString:@"&#8216;" withString:@"'"];
     
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.font = [UIFont systemFontOfSize:16.0];
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    
     cell.textLabel.text = tempTitle2;
     
-
-    //NSString* url = [[self.attachments objectAtIndex:0] valueForKey:@"url"];
     
     //code to convert image urls to viewable images.
     
-    NSURL* myURL = [NSURL URLWithString: self.attachments[indexPath.row][0][@"url"]];
+    /*NSURL* myURL = [NSURL URLWithString: self.attachments[indexPath.row][0][@"url"]];
     
-    //NSLog(@"myURL: %@", myURL);
-    
-    //NSData * imageData = [[NSData alloc] initWithContentsOfURL: myURL];
     
     UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:myURL]];
     
-    //UIImage *thumb = [img makeThumbnailOfSize:CGSizeMake(32,32)];
     
-    cell.imageView.image = img;
-    
-    //cell.imageView.frame = CGRectMake(0,0,16,16);
+    cell.imageView.image = img;*/
+
     
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 80;
+    return 100;
     
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //self.posts
+    
+    //ViewController *test = [self.storyboard instantiateViewControllerWithIdentifier:@"Testing"];
+    //[self performSegueWithIdentifier:@"Test" sender:self];
+    
+    
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    PostViewController* pVC = [segue destinationViewController];
+    
+    NSIndexPath* indexPath = self.tableView.indexPathForSelectedRow;
+    
+    pVC.postTitle = [[self.posts objectAtIndex:indexPath.row] valueForKey:@"title"];
+    
+    pVC.postContent = [[self.posts objectAtIndex:indexPath.row] valueForKey:@"content"];
+    
+//    pVC.postTitle.text = pVC.title;
+//    
+//    NSLog(@"%@", pVC.title);
+    
+}
+
 
 
 @end

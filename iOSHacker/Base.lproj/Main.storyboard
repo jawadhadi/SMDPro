@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--All Posts-->
         <scene sceneID="p1h-s0-tDx">
             <objects>
                 <tableViewController id="wwF-b5-C9D" customClass="ViewController" sceneMemberID="viewController">
@@ -18,6 +18,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LFX-Z4-lah" id="hah-DU-rOu">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="oVo-gX-1tl" kind="show" identifier="postContent" id="HEO-vr-f8V"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -25,7 +28,7 @@
                             <outlet property="delegate" destination="wwF-b5-C9D" id="KBz-33-PeD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Oyw-Bx-o3E"/>
+                    <navigationItem key="navigationItem" title="All Posts" id="Oyw-Bx-o3E"/>
                     <connections>
                         <outlet property="postsView" destination="IbH-Fs-PFO" id="0Ux-Kt-9bl"/>
                     </connections>
@@ -33,6 +36,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ptu-xi-miI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="840" y="80"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="rrF-TF-tvC">
+            <objects>
+                <viewController id="oVo-gX-1tl" customClass="PostViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7X0-kk-waG"/>
+                        <viewControllerLayoutGuide type="bottom" id="i6u-u8-v7L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vG8-4w-Uzv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gpi-3b-70T">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="postArea" destination="Gpi-3b-70T" id="szy-7b-YN1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNV-JJ-AcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1596" y="80"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sBD-Oz-Sf8">

@@ -21,13 +21,41 @@
     
     NSString* feedContent = [NSString stringWithFormat:@"<h3>%@</h3>%@", self.postTitle, self.postContent];
     [self.postArea loadHTMLString:feedContent baseURL:nil];
-
     
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)shareButton:(UIButton *)sender {
+    
+    NSString* tempTitle = self.postTitle;
+    
+    NSURL* tempURL = [NSURL URLWithString:self.url];
+    
+    [self shareText:tempTitle andImage:nil andUrl:tempURL];
+}
+
+
+- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (text) {
+        [sharingItems addObject:text];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
 }
 
 /*

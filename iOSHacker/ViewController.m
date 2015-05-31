@@ -200,6 +200,8 @@
     
     pVC.postContent = [[self.posts objectAtIndex:indexPath.row] valueForKey:@"content"];
     
+    pVC.url = [[self.posts objectAtIndex:indexPath.row] valueForKey:@"url"];
+    
 //    pVC.postTitle.text = pVC.title;
 //    
 //    NSLog(@"%@", pVC.title);

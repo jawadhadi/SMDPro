@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIWebView *postArea;
 @property (strong, nonatomic) NSString* postTitle;
 @property (strong, nonatomic) NSString* postContent;
+@property (strong, nonatomic) NSString* url;
 
 
 @end

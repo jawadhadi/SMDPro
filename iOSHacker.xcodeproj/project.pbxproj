@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0F294AC81B1B7EC0000CBE15 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F294AC71B1B7EC0000CBE15 /* PostViewController.m */; };
+		0FA987CE1B207BF8001A407A /* SplunkMint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987CD1B207BF8001A407A /* SplunkMint.framework */; };
+		0FA987D01B207C5A001A407A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987CF1B207C5A001A407A /* SystemConfiguration.framework */; };
+		0FA987D21B207C66001A407A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987D11B207C66001A407A /* CoreTelephony.framework */; };
+		0FA987D41B207C70001A407A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987D31B207C70001A407A /* WebKit.framework */; };
+		0FA987D61B207C7F001A407A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987D51B207C7E001A407A /* libz.dylib */; };
 		0FC527C71B0E118600F0AA44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC527C61B0E118600F0AA44 /* main.m */; };
 		0FC527CA1B0E118700F0AA44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC527C91B0E118700F0AA44 /* AppDelegate.m */; };
 		0FC527CD1B0E118700F0AA44 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC527CC1B0E118700F0AA44 /* ViewController.m */; };
@@ -27,9 +32,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0F46284B1B21CC120024A49A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0F294AC61B1B7EC0000CBE15 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		0F294AC71B1B7EC0000CBE15 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		0F46283B1B21CC120024A49A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		0FA987CD1B207BF8001A407A /* SplunkMint.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SplunkMint.framework; path = ../../Downloads/SplunkMint.framework; sourceTree = "<group>"; };
+		0FA987CF1B207C5A001A407A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0FA987D11B207C66001A407A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0FA987D31B207C70001A407A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		0FA987D51B207C7E001A407A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0FC527C11B0E118600F0AA44 /* iOSHacker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSHacker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC527C51B0E118600F0AA44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FC527C61B0E118600F0AA44 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -50,6 +74,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA987D61B207C7F001A407A /* libz.dylib in Frameworks */,
+				0FA987D41B207C70001A407A /* WebKit.framework in Frameworks */,
+				0FA987D21B207C66001A407A /* CoreTelephony.framework in Frameworks */,
+				0FA987D01B207C5A001A407A /* SystemConfiguration.framework in Frameworks */,
+				0FA987CE1B207BF8001A407A /* SplunkMint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,11 +92,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F46283A1B21CC120024A49A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0F46283B1B21CC120024A49A /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0FC527B81B0E118600F0AA44 = {
 			isa = PBXGroup;
 			children = (
+				0FA987D51B207C7E001A407A /* libz.dylib */,
+				0FA987D31B207C70001A407A /* WebKit.framework */,
+				0FA987D11B207C66001A407A /* CoreTelephony.framework */,
+				0FA987CF1B207C5A001A407A /* SystemConfiguration.framework */,
+				0FA987CD1B207BF8001A407A /* SplunkMint.framework */,
 				0FC527C31B0E118600F0AA44 /* iOSHacker */,
 				0FC527DD1B0E118700F0AA44 /* iOSHackerTests */,
+				0F46283A1B21CC120024A49A /* Frameworks */,
 				0FC527C21B0E118600F0AA44 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -134,6 +177,7 @@
 				0FC527BD1B0E118600F0AA44 /* Sources */,
 				0FC527BE1B0E118600F0AA44 /* Frameworks */,
 				0FC527BF1B0E118600F0AA44 /* Resources */,
+				0F46284B1B21CC120024A49A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -352,9 +396,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/hadi/Downloads,
+				);
 				INFOPLIST_FILE = iOSHacker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -362,9 +414,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/hadi/Downloads,
+				);
 				INFOPLIST_FILE = iOSHacker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Release;
 		};

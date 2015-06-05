@@ -28,7 +28,20 @@
                             <outlet property="delegate" destination="wwF-b5-C9D" id="KBz-33-PeD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="All Posts" id="Oyw-Bx-o3E"/>
+                    <navigationItem key="navigationItem" title="All Posts" id="Oyw-Bx-o3E">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="1KS-KB-phN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UCB-b8-e0x">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Crash">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="crashIt:" destination="wwF-b5-C9D" eventType="touchUpInside" id="dM4-aM-ycr"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="postsView" destination="IbH-Fs-PFO" id="0Ux-Kt-9bl"/>
                     </connections>

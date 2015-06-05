@@ -55,6 +55,14 @@
 //    NSLog(@"%@", content);
 }
 
+- (IBAction)crashIt:(id)sender {
+    
+    //[[NSThread mainThread] exit];
+    strcpy(0, "bla");
+    
+}
+
+
 -(void)fetchPosts{
     
     //code to fetch JSON data and parse it to foundation objects
@@ -106,7 +114,8 @@
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
     
     NSLog(@"Refreshing data...");
-
+    //strcpy(0, "bla");
+    
     // custom refresh logic would be placed here...
     [self fetchPosts];
 

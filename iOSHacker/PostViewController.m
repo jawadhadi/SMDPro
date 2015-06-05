@@ -14,6 +14,8 @@
 
 @implementation PostViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -57,6 +59,8 @@
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
     [self presentViewController:activityController animated:YES completion:nil];
 }
+
+
 
 /*
 #pragma mark - Navigation

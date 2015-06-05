@@ -16,6 +16,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[Mint sharedInstance] initAndStartSession:@"04dbb544"];
+    
+    
     // Override point for customization after application launch.
     return YES;
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F26DC9B1B242268004703F5 /* TodayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F26DC9A1B242268004703F5 /* TodayTableViewController.m */; };
 		0F294AC81B1B7EC0000CBE15 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F294AC71B1B7EC0000CBE15 /* PostViewController.m */; };
 		0FA987CE1B207BF8001A407A /* SplunkMint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987CD1B207BF8001A407A /* SplunkMint.framework */; };
 		0FA987D01B207C5A001A407A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987CF1B207C5A001A407A /* SystemConfiguration.framework */; };
@@ -20,6 +21,9 @@
 		0FC527D21B0E118700F0AA44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FC527D11B0E118700F0AA44 /* Images.xcassets */; };
 		0FC527D51B0E118700F0AA44 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC527D31B0E118700F0AA44 /* LaunchScreen.xib */; };
 		0FC527E11B0E118700F0AA44 /* iOSHackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC527E01B0E118700F0AA44 /* iOSHackerTests.m */; };
+		0FF007B11B2421B5000CE24B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F46283B1B21CC120024A49A /* NotificationCenter.framework */; };
+		0FF007B91B2421B5000CE24B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF007B81B2421B5000CE24B /* MainInterface.storyboard */; };
+		0FF007BC1B2421B5000CE24B /* iOSHackerToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0FF007B01B2421B5000CE24B /* iOSHackerToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +34,13 @@
 			remoteGlobalIDString = 0FC527C01B0E118600F0AA44;
 			remoteInfo = iOSHacker;
 		};
+		0FF007BA1B2421B5000CE24B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0FC527B91B0E118600F0AA44 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FF007AF1B2421B5000CE24B;
+			remoteInfo = iOSHackerToday;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				0FF007BC1B2421B5000CE24B /* iOSHackerToday.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +58,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F26DC991B242268004703F5 /* TodayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayTableViewController.h; sourceTree = "<group>"; };
+		0F26DC9A1B242268004703F5 /* TodayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayTableViewController.m; sourceTree = "<group>"; };
 		0F294AC61B1B7EC0000CBE15 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		0F294AC71B1B7EC0000CBE15 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		0F46283B1B21CC120024A49A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -67,6 +81,9 @@
 		0FC527DA1B0E118700F0AA44 /* iOSHackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSHackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC527DF1B0E118700F0AA44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FC527E01B0E118700F0AA44 /* iOSHackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSHackerTests.m; sourceTree = "<group>"; };
+		0FF007B01B2421B5000CE24B /* iOSHackerToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iOSHackerToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FF007B41B2421B5000CE24B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FF007B81B2421B5000CE24B /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +103,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FF007AD1B2421B5000CE24B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FF007B11B2421B5000CE24B /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +135,7 @@
 				0FA987CD1B207BF8001A407A /* SplunkMint.framework */,
 				0FC527C31B0E118600F0AA44 /* iOSHacker */,
 				0FC527DD1B0E118700F0AA44 /* iOSHackerTests */,
+				0FF007B21B2421B5000CE24B /* iOSHackerToday */,
 				0F46283A1B21CC120024A49A /* Frameworks */,
 				0FC527C21B0E118600F0AA44 /* Products */,
 			);
@@ -120,6 +146,7 @@
 			children = (
 				0FC527C11B0E118600F0AA44 /* iOSHacker.app */,
 				0FC527DA1B0E118700F0AA44 /* iOSHackerTests.xctest */,
+				0FF007B01B2421B5000CE24B /* iOSHackerToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +194,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0FF007B21B2421B5000CE24B /* iOSHackerToday */ = {
+			isa = PBXGroup;
+			children = (
+				0FF007B81B2421B5000CE24B /* MainInterface.storyboard */,
+				0F26DC991B242268004703F5 /* TodayTableViewController.h */,
+				0F26DC9A1B242268004703F5 /* TodayTableViewController.m */,
+				0FF007B31B2421B5000CE24B /* Supporting Files */,
+			);
+			path = iOSHackerToday;
+			sourceTree = "<group>";
+		};
+		0FF007B31B2421B5000CE24B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0FF007B41B2421B5000CE24B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,6 +228,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0FF007BB1B2421B5000CE24B /* PBXTargetDependency */,
 			);
 			name = iOSHacker;
 			productName = iOSHacker;
@@ -206,6 +253,23 @@
 			productReference = 0FC527DA1B0E118700F0AA44 /* iOSHackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0FF007AF1B2421B5000CE24B /* iOSHackerToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FF007BD1B2421B5000CE24B /* Build configuration list for PBXNativeTarget "iOSHackerToday" */;
+			buildPhases = (
+				0FF007AC1B2421B5000CE24B /* Sources */,
+				0FF007AD1B2421B5000CE24B /* Frameworks */,
+				0FF007AE1B2421B5000CE24B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOSHackerToday;
+			productName = iOSHackerToday;
+			productReference = 0FF007B01B2421B5000CE24B /* iOSHackerToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -220,6 +284,9 @@
 					0FC527D91B0E118700F0AA44 = {
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 0FC527C01B0E118600F0AA44;
+					};
+					0FF007AF1B2421B5000CE24B = {
+						CreatedOnToolsVersion = 6.4;
 					};
 				};
 			};
@@ -238,6 +305,7 @@
 			targets = (
 				0FC527C01B0E118600F0AA44 /* iOSHacker */,
 				0FC527D91B0E118700F0AA44 /* iOSHackerTests */,
+				0FF007AF1B2421B5000CE24B /* iOSHackerToday */,
 			);
 		};
 /* End PBXProject section */
@@ -257,6 +325,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FF007AE1B2421B5000CE24B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FF007B91B2421B5000CE24B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +358,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0FF007AC1B2421B5000CE24B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F26DC9B1B242268004703F5 /* TodayTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -289,6 +373,11 @@
 			isa = PBXTargetDependency;
 			target = 0FC527C01B0E118600F0AA44 /* iOSHacker */;
 			targetProxy = 0FC527DB1B0E118700F0AA44 /* PBXContainerItemProxy */;
+		};
+		0FF007BB1B2421B5000CE24B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FF007AF1B2421B5000CE24B /* iOSHackerToday */;
+			targetProxy = 0FF007BA1B2421B5000CE24B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -462,6 +551,32 @@
 			};
 			name = Release;
 		};
+		0FF007BE1B2421B5000CE24B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = iOSHackerToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0FF007BF1B2421B5000CE24B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = iOSHackerToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -488,6 +603,15 @@
 			buildConfigurations = (
 				0FC527E81B0E118700F0AA44 /* Debug */,
 				0FC527E91B0E118700F0AA44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FF007BD1B2421B5000CE24B /* Build configuration list for PBXNativeTarget "iOSHackerToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FF007BE1B2421B5000CE24B /* Debug */,
+				0FF007BF1B2421B5000CE24B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -10,22 +10,15 @@
 #import "PostViewController.h"
 @import iAd;
 
-//@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, ADBannerViewDelegate>
-//{
-//    ADBannerView *bannerView;
-//}
-//@end
-
 @interface ViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, ADBannerViewDelegate>
 {
     ADBannerView *bannerView;
-    //UIRefreshControl *refresh;
     
 }
 
 @property (nonatomic, strong) NSArray *posts;
 @property (nonatomic, strong) NSMutableArray *attachments;
-@property (nonatomic, strong) NSMutableArray *urls;
+//@property (nonatomic, strong) NSMutableArray *urls;
 
 @property (nonatomic, strong) IBOutlet UITableView* postsView;
 

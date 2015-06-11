@@ -69,28 +69,48 @@
     
     
     NSURL *bURL = [NSURL URLWithString:blogURL];
+    NSData* jsonData;
+    NSDictionary *dataDictionary;
     
-    NSData *jsonData = [NSData dataWithContentsOfURL:bURL];
+    @try
+    {
+        jsonData = [NSData dataWithContentsOfURL:bURL];
+        
+        NSError *error = nil;
+        
+        
+        //fetching JSON data and storing it in NSDictionary
+        dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+        
+        
+        //storing all the post objects in posts array
+        self.posts = [dataDictionary objectForKey:@"posts"];
+        
+        self.attachments = [[NSMutableArray alloc] init];
+        
+        
+        //storing all the attachments in attachments array
+        for (int i = 0; i< self.posts.count; i++) {
+            [self.attachments addObject:[[self.posts objectAtIndex:i]valueForKey:@"attachments"]];
+        }
+        
+    }
+    @catch (NSException *exception)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error"
+                                                        message:@"No Internet available. Kindly check your network connection."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"%@ ",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+    }
     
-    NSError *error = nil;
-    
-    
-    //fetching JSON data and storing it in NSDictionary
-    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-    
+
     //NSLog(@"1");
     
-    
-    //storing all the post objects in posts array
-    self.posts = [dataDictionary objectForKey:@"posts"];
-    
-    self.attachments = [[NSMutableArray alloc] init];
-    
-    
-    //storing all the attachments in attachments array
-    for (int i = 0; i< self.posts.count; i++) {
-        [self.attachments addObject:[[self.posts objectAtIndex:i]valueForKey:@"attachments"]];
-    }
+  
     
     
     //logging all the image URLS for testing

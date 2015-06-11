@@ -65,28 +65,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gpi-3b-70T">
-                                <rect key="frame" x="26" y="72" width="568" height="482"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enm-Ln-ILK">
-                                <rect key="frame" x="26" y="562" width="568" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roD-HN-2FX">
+                                <rect key="frame" x="526" y="26" width="40" height="30"/>
                                 <state key="normal" title="Share">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="shareButton:" destination="oVo-gX-1tl" eventType="touchUpInside" id="Njy-zL-7gw"/>
+                                    <action selector="shareButton:" destination="oVo-gX-1tl" eventType="touchUpInside" id="Cjw-go-Gvh"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="enm-Ln-ILK" firstAttribute="top" secondItem="Gpi-3b-70T" secondAttribute="bottom" constant="8" symbolic="YES" id="Hha-4B-A53"/>
-                            <constraint firstItem="Gpi-3b-70T" firstAttribute="leading" secondItem="vG8-4w-Uzv" secondAttribute="leadingMargin" constant="10" id="I0O-rg-Ujb"/>
-                            <constraint firstItem="enm-Ln-ILK" firstAttribute="leading" secondItem="vG8-4w-Uzv" secondAttribute="leadingMargin" constant="10" id="NHl-be-UJ4"/>
-                            <constraint firstItem="enm-Ln-ILK" firstAttribute="trailing" secondItem="vG8-4w-Uzv" secondAttribute="trailingMargin" constant="10" id="Q58-Ey-SHO"/>
-                            <constraint firstItem="Gpi-3b-70T" firstAttribute="top" secondItem="7X0-kk-waG" secondAttribute="bottom" constant="8" symbolic="YES" id="WWr-2Q-jIt"/>
-                            <constraint firstItem="i6u-u8-v7L" firstAttribute="top" secondItem="enm-Ln-ILK" secondAttribute="bottom" constant="8" symbolic="YES" id="XGX-1W-Grz"/>
-                            <constraint firstItem="Gpi-3b-70T" firstAttribute="trailing" secondItem="vG8-4w-Uzv" secondAttribute="trailingMargin" constant="10" id="fdK-1B-Vs6"/>
+                            <constraint firstItem="Gpi-3b-70T" firstAttribute="leading" secondItem="vG8-4w-Uzv" secondAttribute="leadingMargin" constant="-16" id="I0O-rg-Ujb"/>
+                            <constraint firstItem="Gpi-3b-70T" firstAttribute="top" secondItem="7X0-kk-waG" secondAttribute="bottom" id="WWr-2Q-jIt"/>
+                            <constraint firstItem="Gpi-3b-70T" firstAttribute="trailing" secondItem="vG8-4w-Uzv" secondAttribute="trailingMargin" constant="16" id="fdK-1B-Vs6"/>
+                            <constraint firstItem="Gpi-3b-70T" firstAttribute="bottom" secondItem="i6u-u8-v7L" secondAttribute="top" id="xca-0g-8lr"/>
                         </constraints>
                     </view>
                     <connections>

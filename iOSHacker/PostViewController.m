@@ -31,8 +31,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (IBAction)shareButton:(UIButton *)sender {
+- (IBAction)shareButton:(id)sender {
     
     NSString* tempTitle = self.postTitle;
     
@@ -40,6 +39,11 @@
     
     [self shareText:tempTitle andImage:nil andUrl:tempURL];
 }
+//
+//- (IBAction)shareButton:(UIButton *)sender {
+//    
+//    
+//}
 
 
 - (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url

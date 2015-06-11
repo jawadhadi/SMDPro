@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F18D8C91B2992F900460C94 /* alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F18D8C81B2992F900460C94 /* alpha.png */; };
 		0F26DC9B1B242268004703F5 /* TodayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F26DC9A1B242268004703F5 /* TodayTableViewController.m */; };
 		0F294AC81B1B7EC0000CBE15 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F294AC71B1B7EC0000CBE15 /* PostViewController.m */; };
 		0FA987CE1B207BF8001A407A /* SplunkMint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987CD1B207BF8001A407A /* SplunkMint.framework */; };
@@ -58,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F18D8C81B2992F900460C94 /* alpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alpha.png; sourceTree = "<group>"; };
 		0F26DC991B242268004703F5 /* TodayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayTableViewController.h; sourceTree = "<group>"; };
 		0F26DC9A1B242268004703F5 /* TodayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayTableViewController.m; sourceTree = "<group>"; };
 		0F294AC61B1B7EC0000CBE15 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		0FF007B31B2421B5000CE24B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F18D8C81B2992F900460C94 /* alpha.png */,
 				0FF007B41B2421B5000CE24B /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -332,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F18D8C91B2992F900460C94 /* alpha.png in Resources */,
 				0FF007B91B2421B5000CE24B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

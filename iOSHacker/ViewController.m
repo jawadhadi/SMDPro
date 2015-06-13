@@ -12,7 +12,7 @@
 
 @interface ViewController ()
 
-
+@property (nonatomic, strong) DBManager * dbManager;
 
 @end
 
@@ -35,7 +35,11 @@
     
     self.tableView.tableFooterView = bannerView;
     
+    //self explanatory !
+    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"ioshacker.sql"];
+    
     [self fetchPosts];
+  //  [self saveInfo];
     
     UIRefreshControl  * refresh = [[UIRefreshControl alloc] init];
     
@@ -56,13 +60,50 @@
 //    NSLog(@"%@", content);
 }
 
+//saving data to db
+-(void) saveInfo
+{
+    for (int i = 0; i< self.posts.count; i++) {
+        NSString* tempURL = [[[self.posts objectAtIndex:i] valueForKey:@"url"] stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+        NSString *query = [NSString stringWithFormat:@"INSERT INTO posts VALUES('%@', '%@', '%@')",tempURL,[[self.posts objectAtIndex:i] valueForKey:@"title_plain"],[[self.posts objectAtIndex:i] valueForKey:@"content"]];
+        
+        // Execute the query.
+
+        [self.dbManager executeQuery:query];
+    }
+
+    
+    
+    // If the query was successfully executed then pop the view controller.
+    if (self.dbManager.affectedRows != 0) {
+        NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
+    }
+    else{
+        NSLog(@"Could not execute the query.");
+    }}
+
+
+-(void)loadData{
+//     Form the query.
+    NSString *query = @"select * from posts";
+  
+     NSArray * results =[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+    
+    for(int i=0;i<results.count;i++)
+    {
+        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"url"]] valueForKey:@"url"]];
+        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"title"]] valueForKey:@"title"]];
+        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"content"]] valueForKey:@"content"]];
+    }
+    // Reload the table view.
+    [self.postsView reloadData];
+}
 - (IBAction)crashIt:(id)sender {
     
     //[[NSThread mainThread] exit];
     strcpy(0, "bla");
     
 }
-
 
 -(void)fetchPosts{
     
@@ -93,6 +134,19 @@
         for (int i = 0; i< self.posts.count; i++) {
             [self.attachments addObject:[[self.posts objectAtIndex:i]valueForKey:@"attachments"]];
         }
+    
+        
+        //ad removal
+//        for(int i=0;i<self.posts.count;i++)
+//        {
+//            NSString * cont = [[self.posts objectAtIndex:i] valueForKey:@"content"];
+//            NSRange index = [cont rangeOfString:@"\r"];
+//
+//            while(index.location==NSNotFound)
+//            {
+//                
+//            }
+//        }
         
     }
     @catch (NSException *exception)
@@ -105,6 +159,8 @@
         [alert show];
         NSLog(@"%@ ",exception.name);
         NSLog(@"Reason: %@ ",exception.reason);
+        
+        [self loadData];
     }
     
 

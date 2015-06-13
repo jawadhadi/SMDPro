@@ -27,6 +27,10 @@
 		0FF007B11B2421B5000CE24B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F46283B1B21CC120024A49A /* NotificationCenter.framework */; };
 		0FF007B91B2421B5000CE24B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FF007B81B2421B5000CE24B /* MainInterface.storyboard */; };
 		0FF007BC1B2421B5000CE24B /* iOSHackerToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0FF007B01B2421B5000CE24B /* iOSHackerToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BC9ECFE51B29C4090025AC56 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9ECFE41B29C4090025AC56 /* libsqlite3.dylib */; };
+		BC9ECFE81B29C4C80025AC56 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9ECFE71B29C4C80025AC56 /* DBManager.m */; };
+		BC9ECFEA1B29D74E0025AC56 /* ioshacker.sql in Resources */ = {isa = PBXBuildFile; fileRef = BC9ECFE91B29D74E0025AC56 /* ioshacker.sql */; };
+		BCAC9C291B2C58C000D53710 /* SplunkMint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987CD1B207BF8001A407A /* SplunkMint.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,10 @@
 		0FF007B01B2421B5000CE24B /* iOSHackerToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iOSHackerToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FF007B41B2421B5000CE24B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FF007B81B2421B5000CE24B /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		BC9ECFE41B29C4090025AC56 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BC9ECFE61B29C4C80025AC56 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBManager.h; path = ../DBManager.h; sourceTree = "<group>"; };
+		BC9ECFE71B29C4C80025AC56 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBManager.m; path = ../DBManager.m; sourceTree = "<group>"; };
+		BC9ECFE91B29D74E0025AC56 /* ioshacker.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = ioshacker.sql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +111,6 @@
 				0FA987D41B207C70001A407A /* WebKit.framework in Frameworks */,
 				0FA987D21B207C66001A407A /* CoreTelephony.framework in Frameworks */,
 				0FA987D01B207C5A001A407A /* SystemConfiguration.framework in Frameworks */,
-				0FA987CE1B207BF8001A407A /* SplunkMint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +170,9 @@
 		0FC527C31B0E118600F0AA44 /* iOSHacker */ = {
 			isa = PBXGroup;
 			children = (
+				BC9ECFE61B29C4C80025AC56 /* DBManager.h */,
+				BC9ECFE71B29C4C80025AC56 /* DBManager.m */,
+				BC9ECFE91B29D74E0025AC56 /* ioshacker.sql */,
 				0FC527C81B0E118600F0AA44 /* AppDelegate.h */,
 				0FC527C91B0E118700F0AA44 /* AppDelegate.m */,
 				0FC527CB1B0E118700F0AA44 /* ViewController.h */,
@@ -327,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC9ECFEA1B29D74E0025AC56 /* ioshacker.sql in Resources */,
 				0FC527D01B0E118700F0AA44 /* Main.storyboard in Resources */,
 				0FC527D51B0E118700F0AA44 /* LaunchScreen.xib in Resources */,
 				0FC527D21B0E118700F0AA44 /* Images.xcassets in Resources */,
@@ -361,6 +372,7 @@
 				0FC527CD1B0E118700F0AA44 /* ViewController.m in Sources */,
 				0FC527CA1B0E118700F0AA44 /* AppDelegate.m in Sources */,
 				0FC527C71B0E118600F0AA44 /* main.m in Sources */,
+				BC9ECFE81B29C4C80025AC56 /* DBManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +516,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/hadi/Downloads,
+					/Users/batool/Downloads,
 				);
 				INFOPLIST_FILE = iOSHacker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -523,6 +536,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/hadi/Downloads,
+					/Users/batool/Downloads,
 				);
 				INFOPLIST_FILE = iOSHacker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

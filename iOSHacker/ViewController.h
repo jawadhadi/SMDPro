@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PostViewController.h"
+#import "DBManager.h"
 @import iAd;
 
 @interface ViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, ADBannerViewDelegate>
@@ -16,7 +17,7 @@
     
 }
 
-@property (nonatomic, strong) NSArray *posts;
+@property (nonatomic, strong) NSMutableArray *posts;
 @property (nonatomic, strong) NSMutableArray *attachments;
 //@property (nonatomic, strong) NSMutableArray *urls;
 
@@ -24,5 +25,7 @@
 
 
 -(void)refreshView:(UIRefreshControl *)refresh;
+-(void) saveInfo;
+-(void) loadData;
 
 @end

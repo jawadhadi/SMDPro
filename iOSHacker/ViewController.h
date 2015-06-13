@@ -25,7 +25,7 @@
 
 
 -(void)refreshView:(UIRefreshControl *)refresh;
--(void) saveInfo: (id)sender;
+-(void) saveInfo;
 -(void) loadData;
 
 @end

@@ -81,7 +81,7 @@
         
         // Load all data from database to memory.
         BOOL prepareStatementResult = sqlite3_prepare_v2(sqlite3Database, query, -1, &compiledStatement, NULL);
-        if(prepareStatementResult == SQLITE_OK) {
+        if(prepareStatementResult == (BOOL)SQLITE_OK) {
             // Check if the query is non-executable.
             if (!queryExecutable){
                 // In this case data must be loaded from the database.
@@ -126,7 +126,7 @@
                 
                 // Execute the query.
                 BOOL executeQueryResults = sqlite3_step(compiledStatement);
-                if (executeQueryResults == SQLITE_DONE) {
+                if (executeQueryResults == (BOOL)SQLITE_DONE) {
                     // Keep the affected rows.
                     self.affectedRows = sqlite3_changes(sqlite3Database);
                     

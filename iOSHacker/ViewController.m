@@ -38,6 +38,7 @@
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"ioshacker.sql"];
     
     [self fetchPosts];
+  //  [self saveInfo];
     
     UIRefreshControl  * refresh = [[UIRefreshControl alloc] init];
     
@@ -59,10 +60,11 @@
 }
 
 //saving data to db
--(void) saveInfo:(id)sender
+-(void) saveInfo
 {
     for (int i = 0; i< self.posts.count; i++) {
-        NSString *query = [NSString stringWithFormat:@"insert into posts values(%@, '%@', '%@')",[[self.posts objectAtIndex:i] valueForKey:@"url"],[[self.posts objectAtIndex:i] valueForKey:@"title"],[[self.posts objectAtIndex:i] valueForKey:@"content"]];
+        NSString* tempURL = [[[self.posts objectAtIndex:i] valueForKey:@"url"] stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+        NSString *query = [NSString stringWithFormat:@"INSERT INTO posts VALUES('%@', '%@', '%@')",tempURL,[[self.posts objectAtIndex:i] valueForKey:@"title_plain"],[[self.posts objectAtIndex:i] valueForKey:@"content"]];
         
         // Execute the query.
 
@@ -130,6 +132,17 @@
         //storing all the attachments in attachments array
         for (int i = 0; i< self.posts.count; i++) {
             [self.attachments addObject:[[self.posts objectAtIndex:i]valueForKey:@"attachments"]];
+        }
+        
+        for(int i=0;i<self.posts.count;i++)
+        {
+            NSString * cont = [[self.posts objectAtIndex:i] valueForKey:@"content"];
+            NSRange index = [cont rangeOfString:@"\r"];
+
+            while(index.location==NSNotFound)
+            {
+                
+            }
         }
         
     }

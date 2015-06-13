@@ -133,17 +133,19 @@
         for (int i = 0; i< self.posts.count; i++) {
             [self.attachments addObject:[[self.posts objectAtIndex:i]valueForKey:@"attachments"]];
         }
+    
         
-        for(int i=0;i<self.posts.count;i++)
-        {
-            NSString * cont = [[self.posts objectAtIndex:i] valueForKey:@"content"];
-            NSRange index = [cont rangeOfString:@"\r"];
-
-            while(index.location==NSNotFound)
-            {
-                
-            }
-        }
+        //ad removal
+//        for(int i=0;i<self.posts.count;i++)
+//        {
+//            NSString * cont = [[self.posts objectAtIndex:i] valueForKey:@"content"];
+//            NSRange index = [cont rangeOfString:@"\r"];
+//
+//            while(index.location==NSNotFound)
+//            {
+//                
+//            }
+//        }
         
     }
     @catch (NSException *exception)

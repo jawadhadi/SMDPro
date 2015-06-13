@@ -27,12 +27,13 @@
     
     //iAd
     
-    
     bannerView = [[ADBannerView alloc]initWithFrame:
-                  CGRectMake([[UIScreen mainScreen] bounds].size.width-375, [[UIScreen mainScreen] bounds].size.height-50, 320, 50)];
+                  CGRectMake([[UIScreen mainScreen] bounds].size.width-320, [[UIScreen mainScreen] bounds].size.height-50, 320, 50)];
     // Optional to set background color to clear color
     [bannerView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview: bannerView];
+    //[self.view addSubview: bannerView];
+    
+    self.tableView.tableFooterView = bannerView;
     
     [self fetchPosts];
     
@@ -66,7 +67,6 @@
 -(void)fetchPosts{
     
     //code to fetch JSON data and parse it to foundation objects
-    
     
     NSURL *bURL = [NSURL URLWithString:blogURL];
     NSData* jsonData;
@@ -215,6 +215,7 @@
     
     //ViewController *test = [self.storyboard instantiateViewControllerWithIdentifier:@"Testing"];
     //[self performSegueWithIdentifier:@"Test" sender:self];
+    
     
     
 }

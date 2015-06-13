@@ -12,7 +12,7 @@
 
 @interface ViewController ()
 
-
+@property (nonatomic, strong) DBManager * dbManager;
 
 @end
 
@@ -33,6 +33,9 @@
     // Optional to set background color to clear color
     [bannerView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview: bannerView];
+    
+    //self explanatory !
+    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"ioshacker.sql"];
     
     [self fetchPosts];
     
@@ -55,6 +58,43 @@
 //    NSLog(@"%@", content);
 }
 
+//saving data to db
+-(void) saveInfo:(id)sender
+{
+    for (int i = 0; i< self.posts.count; i++) {
+        NSString *query = [NSString stringWithFormat:@"insert into posts values(%@, '%@', '%@')",[[self.posts objectAtIndex:i] valueForKey:@"url"],[[self.posts objectAtIndex:i] valueForKey:@"title"],[[self.posts objectAtIndex:i] valueForKey:@"content"]];
+        
+        // Execute the query.
+
+        [self.dbManager executeQuery:query];
+    }
+
+    
+    
+    // If the query was successfully executed then pop the view controller.
+    if (self.dbManager.affectedRows != 0) {
+        NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
+    }
+    else{
+        NSLog(@"Could not execute the query.");
+    }}
+
+
+-(void)loadData{
+//     Form the query.
+    NSString *query = @"select * from posts";
+  
+     NSArray * results =[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+    
+    for(int i=0;i<results.count;i++)
+    {
+        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"url"]] valueForKey:@"url"]];
+        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"title"]] valueForKey:@"title"]];
+        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"content"]] valueForKey:@"content"]];
+    }
+    // Reload the table view.
+    [self.postsView reloadData];
+}
 - (IBAction)crashIt:(id)sender {
     
     //[[NSThread mainThread] exit];
@@ -62,11 +102,9 @@
     
 }
 
-
 -(void)fetchPosts{
     
     //code to fetch JSON data and parse it to foundation objects
-    
     
     NSURL *bURL = [NSURL URLWithString:blogURL];
     NSData* jsonData;
@@ -105,6 +143,8 @@
         [alert show];
         NSLog(@"%@ ",exception.name);
         NSLog(@"Reason: %@ ",exception.reason);
+        
+        [self loadData];
     }
     
 

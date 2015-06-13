@@ -35,9 +35,6 @@
     
     self.tableView.tableFooterView = bannerView;
     
-    //self explanatory !
-    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"ioshacker.sql"];
-    
     [self fetchPosts];
   //  [self saveInfo];
     

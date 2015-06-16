@@ -2,7 +2,7 @@
 //  TipViewController.h
 //  iOSHacker
 //
-//  Created by Hadi on 12/06/2015.
+//  Created by Batool on 12/06/2015.
 //
 //
 

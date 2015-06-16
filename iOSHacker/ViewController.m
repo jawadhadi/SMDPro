@@ -27,15 +27,13 @@
     
     //iAd
     
-    
     bannerView = [[ADBannerView alloc]initWithFrame:
-                  CGRectMake([[UIScreen mainScreen] bounds].size.width-375, [[UIScreen mainScreen] bounds].size.height-50, 320, 50)];
+                  CGRectMake([[UIScreen mainScreen] bounds].size.width-320, [[UIScreen mainScreen] bounds].size.height-50, 320, 50)];
     // Optional to set background color to clear color
     [bannerView setBackgroundColor:[UIColor clearColor]];
-    [self.view addSubview: bannerView];
+    //[self.view addSubview: bannerView];
     
-    //self explanatory !
-    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"ioshacker.sql"];
+    self.tableView.tableFooterView = bannerView;
     
     [self fetchPosts];
 //    [self saveInfo];
@@ -329,6 +327,7 @@
     
     //ViewController *test = [self.storyboard instantiateViewControllerWithIdentifier:@"Testing"];
     //[self performSegueWithIdentifier:@"Test" sender:self];
+    
     
     
 }

@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--All Posts-->
         <scene sceneID="p1h-s0-tDx">
             <objects>
                 <tableViewController id="wwF-b5-C9D" customClass="ViewController" sceneMemberID="viewController">
@@ -29,19 +29,11 @@
                             <outlet property="delegate" destination="wwF-b5-C9D" id="KBz-33-PeD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Oyw-Bx-o3E">
-                        <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="99h-kg-RwN">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MdB-FJ-P4B">
-                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Crash">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="crashIt:" destination="wwF-b5-C9D" eventType="touchUpInside" id="D0a-rg-d2s"/>
-                                </connections>
-                            </button>
+                    <navigationItem key="navigationItem" title="All Posts" id="Oyw-Bx-o3E">
+                        <barButtonItem key="rightBarButtonItem" title="Crash" id="VYu-kZ-ub0">
+                            <connections>
+                                <action selector="crashIt:" destination="wwF-b5-C9D" id="q2O-Zs-ZOd"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -55,7 +47,7 @@
         <!--Post View Controller-->
         <scene sceneID="rrF-TF-tvC">
             <objects>
-                <viewController id="oVo-gX-1tl" customClass="PostViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="post" id="oVo-gX-1tl" customClass="PostViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7X0-kk-waG"/>
                         <viewControllerLayoutGuide type="bottom" id="i6u-u8-v7L"/>
@@ -65,27 +57,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gpi-3b-70T">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="56" width="600" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roD-HN-2FX">
-                                <rect key="frame" x="526" y="26" width="40" height="30"/>
-                                <state key="normal" title="Share">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="shareButton:" destination="oVo-gX-1tl" eventType="touchUpInside" id="Cjw-go-Gvh"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rl-mv-jJt">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="WjI-3F-QV1">
+                                        <connections>
+                                            <action selector="shareButton:" destination="oVo-gX-1tl" id="P0x-HF-VOq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9rl-mv-jJt" firstAttribute="top" secondItem="Gpi-3b-70T" secondAttribute="bottom" id="9Y1-eK-zXg"/>
+                            <constraint firstItem="i6u-u8-v7L" firstAttribute="top" secondItem="9rl-mv-jJt" secondAttribute="bottom" id="AvL-f6-zIM"/>
                             <constraint firstItem="Gpi-3b-70T" firstAttribute="leading" secondItem="vG8-4w-Uzv" secondAttribute="leadingMargin" constant="-16" id="I0O-rg-Ujb"/>
-                            <constraint firstItem="Gpi-3b-70T" firstAttribute="top" secondItem="7X0-kk-waG" secondAttribute="bottom" id="WWr-2Q-jIt"/>
+                            <constraint firstItem="Gpi-3b-70T" firstAttribute="leading" secondItem="vG8-4w-Uzv" secondAttribute="leadingMargin" constant="-16" id="S2j-x3-bek"/>
+                            <constraint firstItem="Gpi-3b-70T" firstAttribute="top" secondItem="7X0-kk-waG" secondAttribute="bottom" constant="-8" id="WWr-2Q-jIt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9rl-mv-jJt" secondAttribute="trailing" constant="-16" id="bXB-bt-ddv"/>
+                            <constraint firstItem="9rl-mv-jJt" firstAttribute="leading" secondItem="vG8-4w-Uzv" secondAttribute="leadingMargin" constant="-16" id="efu-Gf-ws6"/>
                             <constraint firstItem="Gpi-3b-70T" firstAttribute="trailing" secondItem="vG8-4w-Uzv" secondAttribute="trailingMargin" constant="16" id="fdK-1B-Vs6"/>
-                            <constraint firstItem="Gpi-3b-70T" firstAttribute="bottom" secondItem="i6u-u8-v7L" secondAttribute="top" id="xca-0g-8lr"/>
+                            <constraint firstItem="Gpi-3b-70T" firstAttribute="top" secondItem="vG8-4w-Uzv" secondAttribute="topMargin" constant="56" id="jKh-2Q-KhG"/>
+                            <constraint firstItem="Gpi-3b-70T" firstAttribute="bottom" secondItem="i6u-u8-v7L" secondAttribute="top" constant="-44" id="xca-0g-8lr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gpi-3b-70T" secondAttribute="trailing" constant="-16" id="xr0-hL-oRR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="B6d-xf-mH3">
+                        <barButtonItem key="rightBarButtonItem" title="Tip us" id="NJM-Uo-9ID">
+                            <connections>
+                                <segue destination="ces-mc-9NB" kind="show" id="Yb2-9w-7uQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="postArea" destination="Gpi-3b-70T" id="szy-7b-YN1"/>
                     </connections>
@@ -93,6 +100,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNV-JJ-AcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1534" y="-423"/>
+        </scene>
+        <!--Tip us-->
+        <scene sceneID="xA6-tz-6xm">
+            <objects>
+                <viewController storyboardIdentifier="tip" id="ces-mc-9NB" customClass="TipViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZPe-HN-mp5"/>
+                        <viewControllerLayoutGuide type="bottom" id="cUO-Kx-3ZS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lTP-Mo-fzN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUi-hU-lme">
+                                <rect key="frame" x="0.0" y="171" width="600" height="429"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxj-Oq-Ilh">
+                                <rect key="frame" x="113" y="85" width="98" height="30"/>
+                                <state key="normal" title="Take Photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="ces-mc-9NB" eventType="touchUpInside" id="zZ0-GY-f0F"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQI-dM-9qn">
+                                <rect key="frame" x="113" y="123" width="98" height="30"/>
+                                <state key="normal" title="Choose Photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="choosePhoto:" destination="ces-mc-9NB" eventType="touchUpInside" id="8Pl-RT-Dfi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uxj-Oq-Ilh" firstAttribute="width" secondItem="sQI-dM-9qn" secondAttribute="width" id="5Un-wn-0xU"/>
+                            <constraint firstItem="uxj-Oq-Ilh" firstAttribute="leading" secondItem="lTP-Mo-fzN" secondAttribute="leading" constant="113" id="AF7-J1-I7d"/>
+                            <constraint firstAttribute="trailing" secondItem="YUi-hU-lme" secondAttribute="trailing" id="GQa-Eb-4f3"/>
+                            <constraint firstItem="YUi-hU-lme" firstAttribute="bottom" secondItem="cUO-Kx-3ZS" secondAttribute="top" id="ITd-pl-eRB"/>
+                            <constraint firstItem="YUi-hU-lme" firstAttribute="leading" secondItem="lTP-Mo-fzN" secondAttribute="leadingMargin" id="Kz3-NB-RgR"/>
+                            <constraint firstItem="uxj-Oq-Ilh" firstAttribute="height" secondItem="sQI-dM-9qn" secondAttribute="height" id="LTA-bd-bSV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YUi-hU-lme" secondAttribute="trailing" constant="-16" id="Ptx-SP-bFQ"/>
+                            <constraint firstItem="YUi-hU-lme" firstAttribute="top" secondItem="sQI-dM-9qn" secondAttribute="bottom" constant="18" id="Wln-FX-4Mg"/>
+                            <constraint firstItem="uxj-Oq-Ilh" firstAttribute="centerX" secondItem="sQI-dM-9qn" secondAttribute="centerX" id="cfR-qo-0HG"/>
+                            <constraint firstItem="uxj-Oq-Ilh" firstAttribute="top" secondItem="ZPe-HN-mp5" secondAttribute="bottom" constant="21" id="gZ4-Oz-MHS"/>
+                            <constraint firstItem="sQI-dM-9qn" firstAttribute="top" secondItem="uxj-Oq-Ilh" secondAttribute="bottom" constant="8" symbolic="YES" id="lzM-VV-yvU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YUi-hU-lme" secondAttribute="trailing" id="oB0-Ge-2V4"/>
+                            <constraint firstItem="YUi-hU-lme" firstAttribute="leading" secondItem="lTP-Mo-fzN" secondAttribute="leading" id="sUy-qg-tQT"/>
+                            <constraint firstItem="YUi-hU-lme" firstAttribute="leading" secondItem="lTP-Mo-fzN" secondAttribute="leadingMargin" constant="-16" id="ugf-UX-mgs"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Kz3-NB-RgR"/>
+                                <exclude reference="Ptx-SP-bFQ"/>
+                                <exclude reference="oB0-Ge-2V4"/>
+                                <exclude reference="ugf-UX-mgs"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tip us" id="2DD-Rk-z42">
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="CBS-0I-waX">
+                            <connections>
+                                <action selector="composeEmail:" destination="ces-mc-9NB" id="0gG-0j-DY8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="capturedImage" destination="YUi-hU-lme" id="P4Y-1K-Cx6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hcT-SW-Ns8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2787" y="-405"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sBD-Oz-Sf8">

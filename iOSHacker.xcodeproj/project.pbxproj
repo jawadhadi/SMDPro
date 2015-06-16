@@ -10,6 +10,9 @@
 		0F18D8C91B2992F900460C94 /* alpha.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F18D8C81B2992F900460C94 /* alpha.png */; };
 		0F26DC9B1B242268004703F5 /* TodayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F26DC9A1B242268004703F5 /* TodayTableViewController.m */; };
 		0F294AC81B1B7EC0000CBE15 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F294AC71B1B7EC0000CBE15 /* PostViewController.m */; };
+		0F30B0071B2B7921004860EC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F30B0061B2B7921004860EC /* MessageUI.framework */; };
+		0F79021C1B2B54FF00CC12E3 /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F79021B1B2B54FF00CC12E3 /* TipViewController.m */; };
+		0FA987CE1B207BF8001A407A /* SplunkMint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987CD1B207BF8001A407A /* SplunkMint.framework */; };
 		0FA987D01B207C5A001A407A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987CF1B207C5A001A407A /* SystemConfiguration.framework */; };
 		0FA987D21B207C66001A407A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987D11B207C66001A407A /* CoreTelephony.framework */; };
 		0FA987D41B207C70001A407A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA987D31B207C70001A407A /* WebKit.framework */; };
@@ -67,7 +70,10 @@
 		0F26DC9A1B242268004703F5 /* TodayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayTableViewController.m; sourceTree = "<group>"; };
 		0F294AC61B1B7EC0000CBE15 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		0F294AC71B1B7EC0000CBE15 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		0F30B0061B2B7921004860EC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		0F46283B1B21CC120024A49A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		0F79021A1B2B54FF00CC12E3 /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
+		0F79021B1B2B54FF00CC12E3 /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
 		0FA987CD1B207BF8001A407A /* SplunkMint.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SplunkMint.framework; path = ../../Downloads/SplunkMint.framework; sourceTree = "<group>"; };
 		0FA987CF1B207C5A001A407A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0FA987D11B207C66001A407A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -100,8 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCAC9C291B2C58C000D53710 /* SplunkMint.framework in Frameworks */,
-				BC9ECFE51B29C4090025AC56 /* libsqlite3.dylib in Frameworks */,
+				0F30B0071B2B7921004860EC /* MessageUI.framework in Frameworks */,
 				0FA987D61B207C7F001A407A /* libz.dylib in Frameworks */,
 				0FA987D41B207C70001A407A /* WebKit.framework in Frameworks */,
 				0FA987D21B207C66001A407A /* CoreTelephony.framework in Frameworks */,
@@ -130,7 +135,7 @@
 		0F46283A1B21CC120024A49A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BC9ECFE41B29C4090025AC56 /* libsqlite3.dylib */,
+				0F30B0061B2B7921004860EC /* MessageUI.framework */,
 				0F46283B1B21CC120024A49A /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -173,6 +178,8 @@
 				0FC527CB1B0E118700F0AA44 /* ViewController.h */,
 				0FC527CC1B0E118700F0AA44 /* ViewController.m */,
 				0FC527CE1B0E118700F0AA44 /* Main.storyboard */,
+				0F79021A1B2B54FF00CC12E3 /* TipViewController.h */,
+				0F79021B1B2B54FF00CC12E3 /* TipViewController.m */,
 				0F294AC61B1B7EC0000CBE15 /* PostViewController.h */,
 				0F294AC71B1B7EC0000CBE15 /* PostViewController.m */,
 				0FC527D11B0E118700F0AA44 /* Images.xcassets */,
@@ -360,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F79021C1B2B54FF00CC12E3 /* TipViewController.m in Sources */,
 				0F294AC81B1B7EC0000CBE15 /* PostViewController.m in Sources */,
 				0FC527CD1B0E118700F0AA44 /* ViewController.m in Sources */,
 				0FC527CA1B0E118700F0AA44 /* AppDelegate.m in Sources */,

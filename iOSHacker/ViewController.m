@@ -158,8 +158,7 @@
         {
             NSString * content = [[rawdata objectAtIndex:i] valueForKey:@"content"];
             
-            NSLog(@"Pehla log: %@", content);
-            
+
             NSRange searchRange = NSMakeRange(0,content.length);
             NSRange foundRange = [content rangeOfString:@"<p>"];
 

@@ -38,7 +38,7 @@
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"ioshacker.sql"];
     
     [self fetchPosts];
-  //  [self saveInfo];
+//    [self saveInfo];
     
     UIRefreshControl  * refresh = [[UIRefreshControl alloc] init];
     
@@ -62,9 +62,12 @@
 //saving data to db
 -(void) saveInfo
 {
+    [self.dbManager executeQuery:@"delete from posts"];
+
+    
     for (int i = 0; i< self.posts.count; i++) {
-        NSString* tempURL = [[[self.posts objectAtIndex:i] valueForKey:@"url"] stringByReplacingOccurrencesOfString:@"http://" withString:@""];
-        NSString *query = [NSString stringWithFormat:@"INSERT INTO posts VALUES('%@', '%@', '%@')",tempURL,[[self.posts objectAtIndex:i] valueForKey:@"title_plain"],[[self.posts objectAtIndex:i] valueForKey:@"content"]];
+        NSString* tempURL = [[[self.posts objectAtIndex:i] objectAtIndex:0] stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+        NSString *query = [NSString stringWithFormat:@"INSERT INTO posts VALUES('%@', '%@', '%@')",tempURL,[[self.posts objectAtIndex:i] objectAtIndex:1],[self.content objectAtIndex:i]];
         
         // Execute the query.
 
@@ -84,15 +87,24 @@
 
 -(void)loadData{
 //     Form the query.
+    
+    
     NSString *query = @"select * from posts";
   
      NSArray * results =[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
     
+    [self.posts removeAllObjects];
+    [self.content removeAllObjects];
+    
+    self.posts = [[ NSMutableArray alloc] init];
+    self.content = [[ NSMutableArray alloc] init];
+    
     for(int i=0;i<results.count;i++)
     {
-        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"url"]] valueForKey:@"url"]];
-        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"title"]] valueForKey:@"title"]];
-        [self.posts addObject:[[[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"content"]] valueForKey:@"content"]];
+        //[self.posts addObject:[results objectAtIndex:i]];
+        [self.posts addObject:[[NSArray alloc] initWithObjects:[[results objectAtIndex:i] objectAtIndex:0],[[results objectAtIndex:i] objectAtIndex:1], nil]];
+        [self.content addObject:[[results objectAtIndex:i] objectAtIndex:2]];
+
     }
     // Reload the table view.
     [self.postsView reloadData];
@@ -124,29 +136,75 @@
         
         
         //storing all the post objects in posts array
-        self.posts = [dataDictionary objectForKey:@"posts"];
+        NSMutableArray *rawdata = [dataDictionary objectForKey:@"posts"];
+        
+        self.posts = [[NSMutableArray alloc] init];
+        for(int i=0;i<10;i++)
+        {
+            [self.posts addObject:[[NSArray alloc] initWithObjects:[[rawdata objectAtIndex:i] valueForKey:@"url"],[[rawdata objectAtIndex:i] valueForKey:@"title"], nil]];
+        }
         
         self.attachments = [[NSMutableArray alloc] init];
-        
+        self.content = [[NSMutableArray alloc] init];
         
         //storing all the attachments in attachments array
         for (int i = 0; i< self.posts.count; i++) {
-            [self.attachments addObject:[[self.posts objectAtIndex:i]valueForKey:@"attachments"]];
+            [self.attachments addObject:[[rawdata objectAtIndex:i]valueForKey:@"attachments"]];
         }
     
         
         //ad removal
-//        for(int i=0;i<self.posts.count;i++)
-//        {
-//            NSString * cont = [[self.posts objectAtIndex:i] valueForKey:@"content"];
-//            NSRange index = [cont rangeOfString:@"\r"];
-//
-//            while(index.location==NSNotFound)
-//            {
-//                
-//            }
-//        }
+        for(int i=0;i < self.posts.count ;i++)
+        {
+            NSString * content = [[rawdata objectAtIndex:i] valueForKey:@"content"];
+            
+            NSLog(@"Pehla log: %@", content);
+            
+            NSRange searchRange = NSMakeRange(0,content.length);
+            NSRange foundRange = [content rangeOfString:@"<p>"];
+
+            NSRange deleteRange = NSMakeRange(0, foundRange.location);
+            NSString * result= [[[rawdata objectAtIndex:i] valueForKey:@"content"] stringByReplacingCharactersInRange:deleteRange withString:@""];
+            content = result;
         
+    
+            
+            foundRange = [content rangeOfString:@"</p>"];
+            BOOL changed=false;
+            NSUInteger length = content.length;
+            while (foundRange.location != NSNotFound) {
+                
+                changed=true;
+                searchRange.location = foundRange.location + foundRange.length;
+                searchRange.length = content.length - searchRange.location;
+
+                
+                NSRange foundRange2 = [content rangeOfString:@"<p>" options:0 range:searchRange];
+                if(foundRange2.location!=NSNotFound)
+                {
+                    deleteRange = NSMakeRange(foundRange.location+foundRange.length, foundRange2.location-foundRange.location-foundRange.length);
+                    
+                    result = [content stringByReplacingCharactersInRange:deleteRange withString:@"\n"];
+                    content=result;
+                    length=content.length;
+                    
+                    searchRange.location= foundRange.location+foundRange.length;
+                    searchRange.length = content.length- searchRange.location;
+                    
+                    foundRange = [content rangeOfString:@"</p>" options:0 range:searchRange];
+
+                }
+                else break;
+            }
+            if(changed)
+            {
+                [self.content addObject:content];
+               // NSLog(@"Teesra: %@", content);
+            }
+
+        }
+        
+        [self saveInfo];
     }
     @catch (NSException *exception)
     {
@@ -158,6 +216,8 @@
         [alert show];
         NSLog(@"%@ ",exception.name);
         NSLog(@"Reason: %@ ",exception.reason);
+        
+        
         
         [self loadData];
     }
@@ -231,7 +291,7 @@
     
     //displays titles in UITableView cells
     
-    NSString *title = [[self.posts objectAtIndex:indexPath.row]valueForKey:@"title_plain"];
+    NSString *title = [[self.posts objectAtIndex:indexPath.row] objectAtIndex:1];
     
     NSString *tempTitle = [title stringByReplacingOccurrencesOfString:@"&#8217;" withString:@"'"];
     
@@ -280,11 +340,11 @@
     
     NSIndexPath* indexPath = self.tableView.indexPathForSelectedRow;
     
-    pVC.postTitle = [[self.posts objectAtIndex:indexPath.row] valueForKey:@"title"];
+    pVC.postTitle = [[self.posts objectAtIndex:indexPath.row] objectAtIndex:1];
     
-    pVC.postContent = [[self.posts objectAtIndex:indexPath.row] valueForKey:@"content"];
+    pVC.postContent = [self.content objectAtIndex:indexPath.row];
     
-    pVC.url = [[self.posts objectAtIndex:indexPath.row] valueForKey:@"url"];
+    pVC.url = [[self.posts objectAtIndex:indexPath.row] objectAtIndex:0];
     
 //    pVC.postTitle.text = pVC.title;
 //    

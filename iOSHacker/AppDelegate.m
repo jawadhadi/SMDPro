@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[Mint sharedInstance] initAndStartSession:@"04dbb544"];
+  //  [[Mint sharedInstance] initAndStartSession:@"04dbb544"];
     
     
     
@@ -46,6 +47,9 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+//    ViewController * vc = [[ViewController alloc] init];
+ //   [vc saveInfo];
 }
 
 @end

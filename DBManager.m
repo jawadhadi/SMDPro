@@ -124,6 +124,7 @@
             else {
                 // This is the case of an executable query (insert, update, ...).
                 
+                
                 // Execute the query.
                 BOOL executeQueryResults = sqlite3_step(compiledStatement);
                 if (executeQueryResults == (BOOL)SQLITE_DONE) {

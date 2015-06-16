@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) NSMutableArray *posts;
 @property (nonatomic, strong) NSMutableArray *attachments;
+@property (nonatomic, strong) NSMutableArray *content;
+
 //@property (nonatomic, strong) NSMutableArray *urls;
 
 @property (nonatomic, strong) IBOutlet UITableView* postsView;

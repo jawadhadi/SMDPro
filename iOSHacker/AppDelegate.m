@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-  //  [[Mint sharedInstance] initAndStartSession:@"04dbb544"];
+    [[Mint sharedInstance] initAndStartSession:@"04dbb544"];
     
     
     
